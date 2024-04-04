@@ -14,38 +14,39 @@ from tqdm import tqdm
 # Check the last digit of your roll number for selecting the dataset
 # roll_number = 234  # Replace with your roll number
 dataset_options = ['STL10', 'SVHN', 'FashionMNIST']
-#selected_dataset = dataset_options[roll_number % 3]
+selected_dataset = 'STL10'
+#selected_dataset = 'SVHN'
 
 # Define transforms based on the selected dataset
-#if selected_dataset == 'STL10':
-# train_transform = transforms.Compose([
-#     transforms.Resize((224, 224)),
-#     transforms.ToTensor(),
-#     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-# ])
-# test_transform = transforms.Compose([
-#     transforms.Resize((224, 224)),
-#     transforms.ToTensor(),
-#     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-# ])
-# num_classes = 10
-# train_dataset = STL10(root='./data', split='train', download=True, transform=train_transform)
-# test_dataset = STL10(root='./data', split='test', download=True, transform=test_transform)
+if selected_dataset == 'STL10':
+    train_transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+    ])
+    test_transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+    ])
+    num_classes = 10
+    train_dataset = STL10(root='./data', split='train', download=True, transform=train_transform)
+    test_dataset = STL10(root='./data', split='test', download=True, transform=test_transform)
 
-# elif selected_dataset == 'SVHN':
-train_transform = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-])
-test_transform = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-])
-num_classes = 10
-train_dataset = SVHN(root='./data', split='train', download=True, transform=train_transform)
-test_dataset = SVHN(root='./data', split='test', download=True, transform=test_transform)
+elif selected_dataset == 'SVHN':
+    train_transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+    ])
+    test_transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+    ])
+    num_classes = 10
+    train_dataset = SVHN(root='./data', split='train', download=True, transform=train_transform)
+    test_dataset = SVHN(root='./data', split='test', download=True, transform=test_transform)
 
 # else:  # FashionMNIST
 #     train_transform = transforms.Compose([
